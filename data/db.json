@@ -2,38 +2,27 @@
   "decks": [
     {
       "name": "mganta@indeed.com",
-      "description": "MBMNBNHGHGHJ",
+      "description": "MBMNBNHG",
       "id": 2
     },
     {
       "name": "Madhumitha",
       "description": "trytrytrtrutrtrtytrutrtyrgvnbvbnvnbvnbvbnbcbnmvhfyfyfffghf       hbhghjgjjhghg.      ygytyrttreetjhghj.       ytytyutuytytyutu",
       "id": 3
-    },
-    {
-      "name": "nbmnb",
-      "description": "nvnbv",
-      "id": 4
     }
   ],
   "cards": [
     {
-      "front": "Front1",
-      "back": "Back1",
+      "front": "front",
+      "back": "back",
+      "deckId": 2,
+      "id": 1
+    },
+    {
+      "front": "front 1",
+      "back": "back 1",
       "deckId": 2,
       "id": 2
-    },
-    {
-      "front": "mbmjm",
-      "back": "bnvbvn",
-      "deckId": 2,
-      "id": 5
-    },
-    {
-      "front": "nbnbm",
-      "back": "hghfjhf",
-      "deckId": 2,
-      "id": 6
     }
   ]
 }

@@ -55,7 +55,7 @@ function Deck() {
             { ...newCard },
             abortController.signal
         );
-        // history.go(0);
+        history.go(0);
         setNewCard({front: "", back: ""});
         return response;
     }

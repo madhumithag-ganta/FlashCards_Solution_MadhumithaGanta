@@ -92,22 +92,92 @@ function Deck() {
         }
     }
 
-if(cards.length > 0){
-  return (
-    <div style={{display: 'flex', flexDirection: 'column'}}>
-        <ul className="breadcrumb">
-            <li className="breadcrumb-item">
-                <Link to="/">Home</Link>
-            </li>
-            <li className="breadcrumb-item">{deck.name}</li>
-        </ul>
-        <div className="card">
+    if (cards.length > 0) {
+        return (
+            <div>
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li className="breadcrumb-item active">{deck.name}</li>
+                </ol>
+                <div className="card">
                     <div className="card-body">
                         <h2 className="card-title">{deck.name}</h2>
                         <p>{deck.description}</p>
                         <button
                             onClick={() => editDeckHandler()}
-
+                        >
+                            Edit
+                        </button>
+                        <button
+                            onClick={() => studyHandler()}
+                          
+                        >
+                            Study
+                        </button>
+                        <button
+                            onClick={() => addCardHandler()}
+                        >
+                            Add Cards
+                        </button>
+                        <button
+                            onClick={() => deleteDeckHandler(deck)}
+                     
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+                <h1>Cards</h1>
+                {cards.map((card) => {
+                    return (
+                        <div className="card-deck" key={card.id}>
+                            <div className="card">
+                                <div className="card-body">
+                                    <div className="row">
+                                        <div className="col">{card.front}</div>
+                                        <div className="col">{card.back}</div>
+                                    </div>
+                                    <div className="container row">
+                                        <button
+                                            onClick={() => editCardHandler(card)}
+                                           
+                                        >
+                                            Edit
+                                        </button>
+                                        <button
+                                            onClick={() =>
+                                                deleteCardHandler(card)
+                                            }
+                            
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li className="breadcrumb-item">{deck.name}</li>
+                </ol>
+                <div className="card">
+                    <div className="card-body">
+                        <h2 className="card-title">{deck.name}</h2>
+                        <p>{deck.description}</p>
+                        <button
+                            onClick={() => editDeckHandler()}
+                    
                         >
                             Edit
                         </button>
@@ -128,38 +198,9 @@ if(cards.length > 0){
                         </button>
                     </div>
                 </div>
-                <h1>Cards</h1>
-                {cards.map((card) => {
-                    return (
-                        <div className="card-deck" key={card.id}>
-                            <div className="card">
-                                <div className="card-body">
-                                    <div className="row">
-                                        <div className="col">{card.front}</div>
-                                        <div className="col">{card.back}</div>
-                                    </div>
-                                    <div className="container row">
-                                        <button
-                                            onClick={() => editCardHandler(card)}
-                                        >
-                                            Edit
-                                        </button>
-                                        <button
-                                            onClick={() =>
-                                               deleteCardHandler(card)
-                                            }
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )})}
-    </div>
-  );
-}
-else return null;
+                </div>
+        )
+    }
 }
 
 export default Deck;

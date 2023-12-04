@@ -75,46 +75,48 @@ function nextCard(index, total) {
 function moreThanTwoCards() {
     return (
         <div className="card">
-            {cards.map((card, index) => {
-                if (index === cardNumber - 1) {
-                    return (
-                        <div className="card-body" key={card.id}>
-                            <div className="card-title">
-                                {`Card ${index + 1} of ${cards.length}`}
+                {cards.map((card, index) => {
+                    if (index === cardNumber - 1) {
+                        return (
+                            <div className="card-body" key={card.id}>
+                                <div className="card-title">
+                                    {`Card ${index + 1} of ${cards.length}`}
+                                </div>
+                                <div className="card-text">
+                                    {front ? card.front : card.back}
+                                </div>
+                                <button
+                                    onClick={flip}
+                                    className="btn btn-secondary mx-1"
+                                >
+                                    Flip
+                                </button>
+                                {nextButton(cards, index)}
                             </div>
-                            <div className="card-text">
-                                {front ? card.front : card.back}
-                            </div>
-                            <button
-                                onClick={flip}
-                            >
-                                Flip
-                            </button>
-                            {nextButton(cards, index)}
-                        </div>
-                    );
-                }
-                return false;
+                        );
+                    }
+                    return false;
 
-            })}
-        </div>
+                })}
+            </div>
     );
 }
 
 function lessThanThreeCards() {
     return (
         <div>
-            <h1>
-                Not enough cards to study. There are {cards.length} 
-                cards in this deck.
-            </h1>
-            <Link
-                to={`/decks/${deck.id}/cards/new`}
-                className="btn btn-primary mx-1"
-            >
-                Add Cards
-            </Link>
-        </div>
+        <h2>Not enough cards.</h2>
+        <p>
+            You need at least 3 cards to study. There are {cards.length}{" "}
+            cards in this deck.
+        </p>
+        <Link
+            to={`/decks/${deck.id}/cards/new`}
+            className="btn btn-primary mx-1"
+        >
+            Add Cards
+        </Link>
+    </div>
     );
 }
 
@@ -149,10 +151,10 @@ function nextButton(cards, index) {
             <div>
                 <h2>{`${deck.name}: Study`}</h2>
                 <div>
-                    {
-                        cards.length > 2
+                    {   cards.length===0 ?lessThanThreeCards()
+                        :(cards.length > 2
                         ? moreThanTwoCards()
-                        : lessThanThreeCards()
+                        : lessThanThreeCards())
                     }
                 </div>
             </div>
